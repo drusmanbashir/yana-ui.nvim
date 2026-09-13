@@ -1,0 +1,17 @@
+yana-ui
+Copyright 2026 Usman Bashir
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The grid modules were first written as part of yana.nvim, by the same
+copyright holder, and moved into this library. No file in this distribution is
+derived from third-party source code, so no third-party licence text applies.
+
+Runtime provenance inventory:
+
+- original: `lua/yana_ui/geometry.lua`
+- original: `lua/yana_ui/grid.lua`
+- original: `lua/yana_ui/grid_layout.lua`
+- original: `lua/yana_ui/init.lua`
+- original: `lua/yana_ui/input.lua`
+- original: `lua/yana_ui/paint.lua`
