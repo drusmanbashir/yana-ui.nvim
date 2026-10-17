@@ -1,17 +1,98 @@
 yana-ui
 Copyright 2026 Usman Bashir
 
-This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+SPDX-License-Identifier: LGPL-3.0-only
 
-The grid modules were first written as part of yana.nvim, by the same
-copyright holder, and moved into this library. No file in this distribution is
-derived from third-party source code, so no third-party licence text applies.
+This distribution is licensed under the GNU Lesser General Public License,
+version 3 only. LICENSE contains the LGPL terms; COPYING contains the GNU
+GPL version 3 terms incorporated by the LGPL. No warranty is provided.
 
-Runtime provenance inventory:
+Qt-derived portions are adapted from qtbase v6.8.3, using its LGPL-3.0-only
+option. Upstream notices retained from the corresponding source files:
+Copyright (C) 2016 The Qt Company Ltd.
+Copyright (C) 2017 The Qt Company Ltd.
+Copyright (C) 2020 The Qt Company Ltd.
+Copyright (C) 2021 The Qt Company Ltd.
+Copyright (C) 2016 Intel Corporation.
+Copyright (C) 2013 Olivier Goffart <ogoffart@woboq.com>
 
+Modified work: Qt algorithms and state transitions were adapted to Lua and
+Neovim by Usman Bashir. This notice was added on 2026-10-08. The source headers
+identify the Qt files and line ranges. This library does not include a Qt
+binary and is not an official Qt product.
+Upstream: https://github.com/qt/qtbase/tree/v6.8.3
+
+Runtime provenance inventory (all entries use LGPL-3.0-only):
+"upstream-derived" identifies known Qt source logic adaptations;
+"original" identifies the remaining Lua implementation, including modules
+first written in yana.nvim by the same copyright holder. These labels do
+not grant different licence terms or approve future upstream imports.
+
+- upstream-derived: `lua/yana_ui/action.lua`
+- upstream-derived: `lua/yana_ui/box_layout.lua`
+- original: `lua/yana_ui/focus.lua`
 - original: `lua/yana_ui/geometry.lua`
 - original: `lua/yana_ui/grid.lua`
 - original: `lua/yana_ui/grid_layout.lua`
 - original: `lua/yana_ui/init.lua`
-- original: `lua/yana_ui/input.lua`
+- upstream-derived: `lua/yana_ui/input.lua`
+- original: `lua/yana_ui/item_row.lua` — one YTableRow/YTreeRow shape rule for views and the proxy model.
+- upstream-derived: `lua/yana_ui/layout.lua`
+- upstream-derived: `lua/yana_ui/layout_axis.lua`
+- upstream-derived: `lua/yana_ui/menu.lua`
+- original: `lua/yana_ui/table_view.lua` — flat concrete class over abstract_item_view.lua.
+- upstream-derived: `lua/yana_ui/object.lua`
 - original: `lua/yana_ui/paint.lua`
+- upstream-derived: `lua/yana_ui/paint_writer.lua`
+- original: `lua/yana_ui/palette.lua`
+- original: `lua/yana_ui/panel_host.lua`
+- original: `lua/yana_ui/push_button.lua`
+- original: `lua/yana_ui/size_policy.lua`
+- original: `lua/yana_ui/style.lua`
+- original: `lua/yana_ui/surface.lua`
+- original: `lua/yana_ui/test_input.lua`
+- original: `lua/yana_ui/text_metrics.lua`
+- original: `lua/yana_ui/tab_header.lua` — native winbar presentation for existing tab models.
+- original: `lua/yana_ui/timer.lua`
+- upstream-derived: `lua/yana_ui/tool_bar.lua`
+- upstream-derived: `lua/yana_ui/tool_button.lua` — instant attached-menu press and down-state lifecycle.
+- upstream-derived: `lua/yana_ui/widget.lua`
+
+Tab, item-view and sort-proxy ports use the locally available qtbase v6.8.4-lts-lgpl
+(ed77a3ca) LGPL option:
+- upstream-derived: `lua/yana_ui/abstract_item_view.lua` — QHeaderView one-column
+  interactive width changes and minimum clamping (qheaderview.cpp:841-912,
+  2524-2563,2585-2598); QAbstractItemView setModel/model destruction
+  (qabstractitemview.h:25; qabstractitemview.cpp:715-765,3741-3745) and the
+  QTableView/QTreeView sort glue (qtableview.cpp:1018-1021,2754-2779,3395-3406;
+  qtreeview.cpp:216-217,835-852,2679-2690,4084-4087), held once in the shared
+  base. Derives YWidget; native buffer scrolling replaces QAbstractScrollArea.
+- upstream-derived: `lua/yana_ui/tab_bar.lua` — QTabBar insert/remove/move,
+  previous-selection indexes and current-index signal order.
+- upstream-derived: `lua/yana_ui/tab_widget.lua` — QTabWidget bar/page
+  synchronization and move bookkeeping.
+- upstream-derived: `lua/yana_ui/sort_filter_proxy_model.lua` —
+  QSortFilterProxyModel sort/filter mapping state and source-reset re-sort,
+  qsortfilterproxymodel.cpp:34-76,120-127,474-518,608-622,681-698,1210-1217,
+  1587-1595,2516-2526,2932-2940,3083-3089,3190-3196,3212-3235,3259-3276;
+  qabstractproxymodel.cpp:428-432.
+- upstream-derived: `lua/yana_ui/table_sort.lua` — custom-order operand swap,
+  qsortfilterproxymodel.cpp:34-76,681-698.
+Upstream: https://github.com/qt/qtbase/tree/v6.8.4-lts-lgpl
+Tab simplifications: horizontal text-only cell labels; no drag, icons, RTL,
+vertical shapes or scroll buttons. Existing cell allocation/elision replaces
+pixel layout. Native header close controls use one completed left click instead
+of canvas press/release; headers have no keyboard focus. Borrowed corner actions
+replace Qt corner widgets. The consumer supplies native windows; buffer pages are borrowed,
+widget pages owned. Duplicate addTab selects an existing page; the widget
+uses SelectPreviousTab for on-demand pages. Close requests do not delete pages.
+
+Additional original Neovim integration modules:
+- original: `lua/yana_ui/context_anchor.lua`
+- original: `lua/yana_ui/panel_collapse.lua`
+- original: `lua/yana_ui/panel_compact.lua`
+- original: `lua/yana_ui/panel_transition.lua`
+- original: `lua/yana_ui/table_cursor.lua`
+- original: `lua/yana_ui/table_header.lua`
+- original: `lua/yana_ui/tooltip.lua`
+- original: `lua/yana_ui/tree_view.lua`

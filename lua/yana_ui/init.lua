@@ -1,8 +1,35 @@
+-- SPDX-FileCopyrightText: 2026 Usman Bashir
+-- SPDX-License-Identifier: LGPL-3.0-only
 local M = {
+  YObject = require("yana_ui.object"),
+  YAction = require("yana_ui.action"),
+  YTimer = require("yana_ui.timer"),
+  YWidget = require("yana_ui.widget"),
+  YLayout = require("yana_ui.layout"),
+  YBoxLayout = require("yana_ui.box_layout"),
+  YSizePolicy = require("yana_ui.size_policy"),
+  YPushButton = require("yana_ui.push_button"),
+  YToolButton = require("yana_ui.tool_button"),
+  YToolBar = require("yana_ui.tool_bar"),
+  YMenu = require("yana_ui.menu"),
+  YAbstractItemView = require("yana_ui.abstract_item_view"),
+  YTableView = require("yana_ui.table_view"),
+  YTableSort = require("yana_ui.table_sort"),
+  YSortFilterProxyModel = require("yana_ui.sort_filter_proxy_model"),
+  YTreeView = require("yana_ui.tree_view"),
+  YTabBar = require("yana_ui.tab_bar"),
+  YTabWidget = require("yana_ui.tab_widget"),
+  YPalette = require("yana_ui.palette"),
+  YStyle = require("yana_ui.style"),
+  YFocus = require("yana_ui.focus"),
+  YPaintWriter = require("yana_ui.paint_writer"),
+  YEventDispatcher = require("yana_ui.input"),
+  YGrid = require("yana_ui.grid"),
+  YPanelHost = require("yana_ui.panel_host"),
+  YTextMetrics = require("yana_ui.text_metrics"),
+  YTestInput = require("yana_ui.test_input"),
   paint = require("yana_ui.paint"),
   geometry = require("yana_ui.geometry"),
-  input = require("yana_ui.input"),
-  grid = require("yana_ui.grid"),
 }
 
 return M

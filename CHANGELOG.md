@@ -1,20 +1,18 @@
 # Changelog
 
-All notable changes to yana-ui are documented here. Versions follow Semantic
-Versioning.
+## 0.1.0-alpha.1 - 2026-10-17
 
-## 0.1.0-alpha.1 - 2026-09-10
+- Retire grid input and rendering after native window or callback teardown.
 
-First public release. yana-ui is the UI grid and layout library that
-yana.nvim depends on.
+### Current API
 
-### Added
-
-- `yana_ui.grid`: a cell-grid controller. It lays cells out as a column table
-  or a flowing grid, highlights them, fits the result to a height cap, and
-  routes keyboard navigation, mouse press, release and hover, and cancel and
-  apply to caller-supplied hooks.
-- `yana_ui.paint`: read highlight extmarks by position, by range, or by group.
-- `yana_ui.geometry`: window geometry and screen-cell resolution.
-- `yana_ui.input`: resolve a screen coordinate through a caller-supplied
-  resolver and dispatch hover or press to a caller-supplied handler.
+- Use LGPL-3.0-only for Qt-derived Lua; include LICENSE, COPYING, NOTICE,
+  Qt rights-holder credits and SPDX/provenance headers. Preserve earlier
+  valid Apache rights in original code; keep runtime behavior unchanged.
+- Generate every public export’s reference from LuaCATS; run its example and
+  the full docs gate.
+- Use `yana_ui.grid` for columns/flowing cells, highlights, height limits,
+  keyboard/mouse navigation and caller cancel/apply callbacks.
+- Read extmark positions/ranges/groups with `yana_ui.paint`.
+- Read window geometry/screen cells with `yana_ui.geometry`.
+- Resolve screen coordinates and route hover/press with `yana_ui.input`.
